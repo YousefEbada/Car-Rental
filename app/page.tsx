@@ -2,6 +2,8 @@
 
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
+
+
 import { SearchBar, CustomFilter, Hero, CarCard, ShowMore } from "@/components";
 import { mockCars } from "@/mockData";
 import ClearSearchParamsOnLoad from "@/components/ClearSearchParamsOnLoad";
