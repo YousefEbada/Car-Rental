@@ -1,5 +1,6 @@
 "use client";
 export const dynamic = "force-dynamic";
+import { connection } from 'next/server'
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
@@ -9,7 +10,7 @@ import { mockCars } from "@/mockData";
 import ClearSearchParamsOnLoad from "@/components/ClearSearchParamsOnLoad";
 import { fuels, yearsOfProduction } from "@/constants";
 
-export default function Home() {
+export default async function Home() {
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
 
@@ -38,6 +39,7 @@ export default function Home() {
   const carsToShow = filteredCars.slice(0, limit);
   const isDataEmpty = !Array.isArray(filteredCars) || filteredCars.length < 1;
 
+  await connection();
   return (
     <main className="overflow-hidden">
       <ClearSearchParamsOnLoad />
